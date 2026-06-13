@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Program Manager — TV Schedule</title>
+<meta name="description" content="Manage TV programs efficiently across SABC1, SABC2, SABC3 and eTV." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4"/></svg>
+        </div>
+        <div>
+          <h1>Program Manager</h1>
+          <p>Manage your programs efficiently</p>
+        </div>
+      </div>
+      <div class="stats">
+        <strong id="statCount">0 programs</strong>
+        <span id="statChannels">across 0 channels</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <form class="card" id="programForm" novalidate>
+      <div class="form-head">
+        <div class="form-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v6"/></svg>
+        </div>
+        <div>
+          <h2 id="formTitle">Program Details</h2>
+          <p id="formSubtitle">Add a new program to your schedule</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="name">Program Name</label>
+        <input id="name" class="input" type="text" placeholder="e.g. Morning News" />
+        <span class="error" data-error="name"></span>
+      </div>
+
+      <div class="field">
+        <label for="description">Description</label>
+        <textarea id="description" class="textarea" placeholder="Short description"></textarea>
+        <span class="error" data-error="description"></span>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="duration">Duration (min)</label>
+          <input id="duration" class="input" type="number" min="1" max="300" placeholder="60" />
+          <span class="error" data-error="duration"></span>
+        </div>
+        <div class="field">
+          <label for="timeSlot">Time Slot</label>
+          <input id="timeSlot" class="input" type="time" />
+          <span class="error" data-error="timeSlot"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="channel">Channel</label>
+        <select id="channel" class="select">
+          <option value="">Select a channel</option>
+          <option value="SABC1">SABC1</option>
+          <option value="SABC2">SABC2</option>
+          <option value="SABC3">SABC3</option>
+          <option value="eTV">eTV</option>
+        </select>
+        <span class="error" data-error="channel"></span>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" id="submitBtn">Add Program</button>
+        <button type="button" class="btn btn-secondary" id="cancelBtn" style="display:none; flex:0 0 auto;">Cancel</button>
+      </div>
+    </form>
+
+    <div>
+      <section class="card search-section">
+        <h2>Search &amp; Filter</h2>
+        <div class="search-row">
+          <div class="search-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input id="search" class="input" type="text" placeholder="Search programs by name or description..." />
+          </div>
+          <select id="filter" class="select filter-select">
+            <option value="">All Channels</option>
+            <option value="SABC1">SABC1</option>
+            <option value="SABC2">SABC2</option>
+            <option value="SABC3">SABC3</option>
+            <option value="eTV">eTV</option>
+          </select>
+        </div>
+      </section>
+
+      <div id="programGrid"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Program Manager. All rights reserved.</p>
+    <p>Developed by Boitumelo Mokwana</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
